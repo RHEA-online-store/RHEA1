@@ -1,13 +1,6 @@
-package com.rhea.store.Controllers;
+package com.rhea.store.controllers;
 
-import com.rhea.store.models.ProductCard;
-import com.rhea.store.repos.ProductCardRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
+/*@Controller
 public class StoreController {
 
     @Autowired
@@ -23,5 +16,5 @@ public class StoreController {
         return "store-main";
     }
 }
-
+*/
 

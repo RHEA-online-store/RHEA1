@@ -1,10 +1,6 @@
-package com.rhea.store.Controllers;
+package com.rhea.store.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
+/*@Controller
 public class MainController {
 
     @GetMapping("/")
@@ -21,4 +17,10 @@ public class MainController {
         return "about";
     }
 
-}
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("title", "Войти");
+        return "login";
+    }
+
+}*/

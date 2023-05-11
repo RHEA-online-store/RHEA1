@@ -1,12 +1,9 @@
-package com.rhea.store.models;
+package com.rhea.store.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
 
 @Entity
-public class ProductCard {
+public class ProductCard {/*
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,5 +45,5 @@ public class ProductCard {
 
     public void setProductCardPrice(int productCardPrice) {
         this.productCardPrice = productCardPrice;
-    }
+    }*/
 }
