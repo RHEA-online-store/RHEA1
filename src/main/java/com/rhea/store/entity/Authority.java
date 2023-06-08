@@ -16,6 +16,8 @@ public class Authority {
 
     public Authority(String authority) {
     }
+    public Authority() {
+    }
 
     public String getAuthority() {
         return authority;

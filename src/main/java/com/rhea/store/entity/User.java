@@ -1,7 +1,6 @@
 package com.rhea.store.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -9,9 +8,6 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Size(min=5, message = "Не меньше 5 знаков")
     @Column(name = "username")
     private String username;
 
@@ -63,6 +59,9 @@ public class User {
 
     public String getPasswordConfirm() {
         return passwordConfirm;
+    }
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     @Override
