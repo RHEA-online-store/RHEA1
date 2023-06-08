@@ -1,13 +1,17 @@
 package com.rhea.store.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Size(min=5, message = "Не меньше 5 знаков")
     @Column(name = "username")
     private String username;
 
@@ -18,7 +22,10 @@ public class User {
     private boolean enabled;
 
     @OneToMany(mappedBy = "user")
-    private List<Authority> authorities;
+    private Set<Authority> authorities;
+
+    @Transient
+    private String passwordConfirm;
 
     public User() {}
 
@@ -46,12 +53,16 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Authority> getAuthorities() {
+    public Set<Authority> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
+    public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
     @Override

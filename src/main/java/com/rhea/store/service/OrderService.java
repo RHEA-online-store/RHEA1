@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class OrderService {
@@ -59,7 +60,7 @@ public class OrderService {
 
     public List<Order> getCustomOrders(Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        List<Authority> authorities = user.getAuthorities();
+        Set<Authority> authorities = user.getAuthorities();
         for (Authority authority : authorities) {
             if (authority.getAuthority().equals("ROLE_SELLER")) {
                 return getAllOrders();

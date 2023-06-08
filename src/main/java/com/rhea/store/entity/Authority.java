@@ -14,7 +14,7 @@ public class Authority {
     @JoinColumn(name = "username")
     private User user;
 
-    public Authority() {
+    public Authority(String authority) {
     }
 
     public String getAuthority() {

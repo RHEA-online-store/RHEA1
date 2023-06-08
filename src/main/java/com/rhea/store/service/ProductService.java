@@ -7,13 +7,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
 
     private ProductRepository productRepository;
 
     @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -39,5 +41,9 @@ public class ProductService {
     // In future releases
     public void addProduct(Product product) {
         productRepository.save(product);
+    }
+
+    public List<Product> search(String query) {
+        return productRepository.findByTitleContainingIgnoreCase(query);
     }
 }
