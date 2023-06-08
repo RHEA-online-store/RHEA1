@@ -1,74 +1,35 @@
 package com.rhea.store.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "t_user")
-public class User implements UserDetails {
+@Table(name = "users")
+public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Size(min=5, message = "Не меньше 5 знаков")
+    @Column(name = "username")
     private String username;
-    @Size(min=5, message = "Не меньше 5 знаков")
+
+    @Column(name = "password")
     private String password;
-    @Transient
-    private String passwordConfirm;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
 
-    public User() {
-    }
+    @Column(name = "enabled")
+    private boolean enabled;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "user")
+    private List<Authority> authorities;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public User() {}
 
-    @Override
     public String getUsername() {
         return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
-    }
-
-    @Override
     public String getPassword() {
         return password;
     }
@@ -77,20 +38,28 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public List<Authority> getAuthorities() {
+        return authorities;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
 
+    @Override
+    public String toString() {
+        return "User [" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                "]\n";
+    }
 }
