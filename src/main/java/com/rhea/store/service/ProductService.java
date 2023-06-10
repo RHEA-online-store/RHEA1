@@ -1,6 +1,7 @@
 package com.rhea.store.service;
 
 import com.rhea.store.entity.Product;
+import com.rhea.store.entity.User;
 import com.rhea.store.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,5 +58,9 @@ public class ProductService {
 
     public List<Product> search(String query) {
         return productRepository.findByTitleContainingIgnoreCase(query);
+    }
+
+    public List<Product> allProducts() {
+        return productRepository.findAll();
     }
 }

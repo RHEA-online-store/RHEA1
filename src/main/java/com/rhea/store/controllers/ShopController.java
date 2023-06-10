@@ -28,10 +28,6 @@ public class ShopController {
         return "shop";
     }
 
-    /*@GetMapping
-    public String showProducts(@RequestParam(defaultValue = "0") int page, Model model){
-        Page<Product> productsPage = productService.getProductsPage(page);
-    }*/
 
     @GetMapping("/details/{id}")
     public String toDetails(Model model, @PathVariable("id") Long id) {
